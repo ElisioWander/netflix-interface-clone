@@ -1,15 +1,13 @@
-import React, { useEffect, useState } from 'react'
-import Tmdb from './Tmdb'
-import MovieRow from './Components/MovieRow/index'
-import FeaturedMovie from './Components/FeaturedMovie/index'
-import Header from './Components/Header/index'
+import { useEffect, useState } from 'react'
+import Tmdb from '../Tmdb'
+import { MovieRow } from '../Components/MovieRow/index'
+import { FeaturedMovie } from '../Components/FeaturedMovie/index'
+import { Header } from '../Components/Header/index'
 
-import './App.css'
 
-export default () => {
-
+export function Home() {
   const [movieList, setMovieList] = useState([])
-  const [featuredData, setFeaturedData] = useState(null)
+  const [featuredData, setFeaturedData] = useState()
   const [headerBlack, setHeaderBlack] = useState(false)
   
   useEffect(() => {

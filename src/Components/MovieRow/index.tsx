@@ -1,11 +1,21 @@
-import React, {useState} from 'react'
+import {useState} from 'react'
 
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore'
 import NavigateNextIcon from '@material-ui/icons/NavigateNext'
 
 import './style.css'
 
-export default ({items, title}) => {
+interface MovieRowProps {
+  items: {
+    results: [{
+      poster_path: string,
+      original_title: string
+    }]
+  },
+  title: string
+}
+
+export function MovieRow({ items, title }: MovieRowProps) {
   const [scrollX, setScrollX] = useState(-400)
 
   const handleLeftArrow = () => {

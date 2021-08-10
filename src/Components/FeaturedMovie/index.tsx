@@ -1,15 +1,30 @@
-import React from 'react'
-
 import './style.css'
 
-export default ({item}) => {
+type Genres = {
+  name: string
+}
+
+interface FeaturedProps {
+  item: {
+    id: number,
+    first_air_date: string,
+    genres: Genres[],
+    backdrop_path: string,
+    original_name: string,
+    vote_average: number,
+    number_of_seasons: number,
+    overview: string
+  }
+}
+
+
+export function FeaturedMovie({ item }: FeaturedProps) {
   let firstDate = new Date(item.first_air_date)
   let genres = []
   for(let i in item.genres) {
     genres.push(item.genres[i].name)
   }
 
-  console.log(item)
   return (
     <section 
       className="featured"
@@ -41,4 +56,4 @@ export default ({item}) => {
       </div>
     </section>
   )
-}
+} 
