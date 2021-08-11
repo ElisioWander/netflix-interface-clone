@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react'
-import Tmdb from '../Tmdb'
-import { MovieRow } from '../Components/MovieRow/index'
-import { FeaturedMovie } from '../Components/FeaturedMovie/index'
-import { Header } from '../Components/Header/index'
-
+import Tmdb from '../../Tmdb'
+import { MovieRow } from '../MovieRow/index'
+import { FeaturedMovie } from '../FeaturedMovie/index'
+import { Header } from '../Header/index'
 
 export function Home() {
   const [movieList, setMovieList] = useState([])
@@ -16,6 +15,7 @@ export function Home() {
       let list = await Tmdb.getHomeList()
 
       setMovieList(list)
+      console.log(list)
 
       //pegando a featured
       let originals = list.filter(i => i.slug === 'originals')
@@ -23,6 +23,8 @@ export function Home() {
       let chosen = originals[0].items.results[randomChosen]
       let chosenInfo = await Tmdb.getMovieInfo(chosen.id, 'tv')
       setFeaturedData(chosenInfo)
+
+      console.log(chosenInfo)
     }
 
     loadAll()
